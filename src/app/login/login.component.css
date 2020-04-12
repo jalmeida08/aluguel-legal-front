@@ -1,0 +1,5 @@
+.form { margin-top: 10%; }
+.form-head { background-color:#CCC; border-radius: 10px 10px 0 0; text-align: center; padding: 10px; font-size: 2em; }  
+.form-body { padding: 10px; border-left: #CCC 3px solid; border-right: #CCC 3px solid; }
+.form-footer { padding: 0 10px 0 10px;  border-left: #CCC 3px solid; border-right: #CCC 3px solid; border-bottom: #CCC 3px solid; padding-bottom: 25px;} 
+
