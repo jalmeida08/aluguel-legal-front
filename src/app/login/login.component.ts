@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../_model/usuario';
 import { LoginService } from './login.service';
 import { Alerta } from '../_diretivas/alerta/alerta';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'login-name',
@@ -14,8 +16,13 @@ export class LoginComponent implements OnInit {
     public usuario: Usuario = new Usuario();
     private alertas: Array<Alerta> = new Array<Alerta>();
 
-    constructor(private _loginService: LoginService) {
+    constructor(
+        private _loginService: LoginService,
+        private _dataService: DataService,
+        private _router: Router,
+    ) {
         this._loginService = _loginService;
+        this._dataService  = _dataService;
     }
     // RESPONSAVEL POR DISPARAR AS MENSAGENS NA TELA
     public alerta(
@@ -36,6 +43,8 @@ export class LoginComponent implements OnInit {
             .login(this.usuario)
             .subscribe( res => {
                 console.warn(res);
+                this._dataService.registrarSessao(res)
+                this._router.navigate(["home"]);
             }, error => {
                 console.error(error);
                 this.alerta(error.error, "danger", "Erro! ");

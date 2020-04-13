@@ -4,6 +4,7 @@ import { urlBase } from '../_model/urlBase';
 import { Usuario } from '../_model/usuario';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { stringify } from 'querystring';
 
 @Injectable()
 export class LoginService {
