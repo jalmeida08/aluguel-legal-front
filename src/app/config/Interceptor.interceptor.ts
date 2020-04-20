@@ -18,10 +18,11 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<any>> {
         
         this._dataService.verificarSessao();
-
-        console.log("Intercept");
+        let token = 'Bearer '.concat(this._dataService.recuperarSessao());
         const dupReq = req.clone({
-            headers: req.headers.set('key', 'DCtbqRXC8L'),
+            headers: req.headers.set('Authorization', token)
+                .set("Content-Type", "application/json")
+            
         });
         return next.handle(dupReq);
     }

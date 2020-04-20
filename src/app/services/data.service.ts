@@ -31,6 +31,13 @@ export class DataService {
         localStorage.setItem('usrAluguelLegal', usuario.usuario);
         localStorage.setItem('tkAluguelLegal', usuario.token);
     }
+    
+    recuperarSessao(): string{
+        if(localStorage.getItem('tkAluguelLegal'))
+            return localStorage.getItem('tkAluguelLegal'); 
+        return "";
+
+    }
 
     limparSessao(): void {
         localStorage.clear();

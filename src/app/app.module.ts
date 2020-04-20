@@ -10,10 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
 import { Interceptor } from './config/Interceptor.interceptor';
 import { DataService } from './services/data.service';
+import { MenuComponent } from './menu/menu.component';
+import { AdministracaoModule } from './administracao/administracao.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ import { DataService } from './services/data.service';
     routing,
     LoginModule,
     HomeModule,
+    AdministracaoModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
