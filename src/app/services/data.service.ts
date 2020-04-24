@@ -8,21 +8,14 @@ export class DataService {
     constructor(private _router: Router) { }
 
     verificarSessao(): void{
-        console.log('verificar sessao');
-        
         let usrAluguelLegal   = localStorage.getItem('usrAluguelLegal');
         let tkAluguelLegal    = localStorage.getItem('tkAluguelLegal');
         let usrIdAluguelLegal = localStorage.getItem('usrIdAluguelLegal');
 
-        console.log('usrAluguelLegal'  , usrAluguelLegal);
-        console.log('tkAluguelLegal'   , tkAluguelLegal);
-        console.log('usrIdAluguelLegal', usrIdAluguelLegal);
-        console.log(!usrAluguelLegal, !tkAluguelLegal, !usrIdAluguelLegal);
-        
         if(!usrAluguelLegal || !tkAluguelLegal || !usrIdAluguelLegal ){
             console.log('dentro do if');
-            this._router.navigate(['']);
-            return;
+            // this._router.navigate(['']);
+            // return;
         }
     }
 

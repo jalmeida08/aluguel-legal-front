@@ -13,7 +13,7 @@ export class LocatarioService {
     listarLocatario() : Observable<any> {
         return this.http
             .get(
-                urlBase.url + 'proprietario/listar-propeitarios'
+                urlBase.url + 'proprietario/listar-proprietarios'
             ).pipe(
                 map( res => {
                     return res;
