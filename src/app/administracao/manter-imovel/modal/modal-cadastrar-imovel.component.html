@@ -1,0 +1,103 @@
+<!-- Modal -->
+<div class="modal fade" id="modalCadastrarImovel" tabindex="-1" role="dialog" aria-labelledby="modalCadastrarImovel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalCadastrarImovel">Imovel</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<form method="POST" (submit)="salvar()">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group">
+								<label for="numeroCep">CEP</label>
+								<input type="text" class="form-control" id="numeroCep" placeholder="" name="numeroCep" [(ngModel)]="imovel.cep" (blur)="buscarCep()">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="endereco">Endereço</label>
+								<input type="text" class="form-control" id="endereco" name="endereco" [(ngModel)]="imovel.endereco">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="form-group">
+								<label for="numero">Número</label>
+								<input type="text" class="form-control" id="numero" placeholder="Nº" name="numero" [(ngModel)]="imovel.numero">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="bairro">Bairro</label>
+								<input type="text" class="form-control" id="bairro" placeholder="" name="bairro" [(ngModel)]="imovel.bairro">
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="cidade">Cidade</label>
+								<input type="text" class="form-control" id="cidade" placeholder="" name="cidade" [(ngModel)]="imovel.cidade">
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="estado">Estado</label>
+								<input type="text" class="form-control" id="estado" placeholder="" name="estado" [(ngModel)]="imovel.estado">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="complemento">Complemento</label>
+								<input type="text" class="form-control" id="complemento" placeholder="" name="complemento" [(ngModel)]="imovel.complemento">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="proprietario">Proprietário</label>
+								<select class="form-control" id="proprietario" name="proprietario" [(ngModel)]="pessoaSelecionada">
+								  <option selected value="">Selecione...</option>
+								  <option *ngFor="let item of listaProprietarios;" [ngValue]="item" >{{ item.nome }}</option>
+								</select>
+							  </div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="cidade">Status imóvel</label>
+								<div class="row check-in-line">
+									<div class="form-check not-check-in-line">
+										<input class="form-check-input" type="radio" name="statusImovel" id="disponivel" value="DISPONIVEL" checked [(ngModel)]="imovel.statusImovel">
+										<label class="form-check-label" for="disponivel">Disponível</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="statusImovel" id="alugado" value="ALUGADO" [(ngModel)]="imovel.statusImovel">
+										<label class="form-check-label" for="alugado">Alugado</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="statusImovel" id="manutencao" value="MANUTENCAO" [(ngModel)]="imovel.statusImovel">
+										<label class="form-check-label" for="manutencao">Em Manutenção</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+					<button type="submit" class="btn btn-primary">Salvar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

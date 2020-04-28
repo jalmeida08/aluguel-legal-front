@@ -1,0 +1,29 @@
+<!-- <div class="menu-locatario">
+    <div class="row">
+        <ul class="nav " style="width: 50%; padding-left: 5%;">
+            <span class="navbar-brand">{{ nomeArea }}</span>
+        </ul>
+        <ul class="nav justify-content-end" style="width: 50%;">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" title="{{ nomeTituloBotao }}"  data-toggle="modal" (click)="abrirModal()" data-target="{{idModal}}">
+                    <span class="material-icons">{{ icone }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+ -->
+ <div class="menu-locatario">
+    <div class="row">
+        <ul class="nav " style="width: 50%; padding-left: 5%;">
+            <span class="navbar-brand">{{ componentNavegacaoMenu.tituloMenu }}</span>
+        </ul>
+        <ul class="nav justify-content-end" style="width: 50%;"  *ngFor="let item of componentNavegacaoMenu.listaComponentesMenu">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" title="{{ item.tituloBotao }}"  data-toggle="modal" (click)="abrirModal(item.idModal)" data-target="{{item.idModal}}">
+                    <span class="material-icons">{{ item.icone }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

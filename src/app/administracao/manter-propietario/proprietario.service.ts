@@ -8,19 +8,27 @@ import { Proprietario } from 'src/app/_model/proprietario';
 @Injectable()
 export class ProprietarioService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private _http: HttpClient) {}
 
     salvar (proprietario: Proprietario): Observable<any> {
-
-        console.log(proprietario);
-        return this.http
-            .post(urlBase.url + 'proprietario/salvar', proprietario)
+        return this._http
+            .post(`${urlBase.url}/proprietario/salvar`, proprietario)
             .pipe(
                 map( res => {
                     console.log(res);
                     return res;
                 })
             );
-    } 
+    }
+
+    listarProprietarios(): Observable<any>{
+        return this._http
+            .get(`${urlBase.url}/proprietario/listar-proprietarios`)
+            .pipe(
+                map ( res => {
+                    return res;
+                })
+            );
+    }
 
 }

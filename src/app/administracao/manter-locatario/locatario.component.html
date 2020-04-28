@@ -1,15 +1,20 @@
-<div class="menu-locatario">
+<!-- <div class="menu-locatario">
     <div class="row">
         <ul class="nav " style="width: 50%; padding-left: 05%;">
             <span class="navbar-brand">Locatário</span>
         </ul>
         <ul class="nav justify-content-end" style="width: 50%;">
             <li class="nav-item">
-                <a class="nav-link active" href="#" title="Adicionar">
+                <a class="nav-link active" href="#" title="Adicionar"  data-toggle="modal" data-target="#modalCadastrarLocatario">
                     <span class="material-icons">add_circle_outline</span>
                 </a>
             </li>
         </ul>
     </div>
-</div>
+</div> -->
+
+<menu-administracao nomeArea="Locatário" nomeTituloBotao="Adicionar" idModal="#modalCadastrarLocatario" icone="add_circle_outline"></menu-administracao>
+
 <locatario-listar></locatario-listar>
+
+<modal-cadastrar-locatario></modal-cadastrar-locatario>

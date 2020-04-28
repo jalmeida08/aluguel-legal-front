@@ -12,9 +12,8 @@ export class LocatarioService {
     // urlBase.url + 'locatario/listar-locatarios-ativos'
     listarLocatario() : Observable<any> {
         return this.http
-            .get(
-                urlBase.url + 'proprietario/listar-propeitarios'
-            ).pipe(
+            .get( `${urlBase.url}/proprietario/listar-proprietarios`)
+            .pipe(
                 map( res => {
                     return res;
                 })

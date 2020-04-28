@@ -14,7 +14,7 @@ export class UsuarioService {
         console.log(usuario);
         
         return this.http
-            .post(urlBase.url + "usuario/salvar", usuario)
+            .post(`${urlBase.url}/usuario/salvar`, usuario)
             .pipe( map( res => { return res; } ) );
     }
 }

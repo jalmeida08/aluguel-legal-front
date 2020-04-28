@@ -13,10 +13,8 @@ export class LoginService {
 
     login (usuario: Usuario) : Observable<any> {
         return this.http
-            .post(
-                urlBase.url + 'usuario/login', 
-                usuario
-            ).pipe(
+            .post(`${urlBase.url}/usuario/login`, usuario)
+            .pipe(
                 map( user => {
                     if( user && usuario.token )
                         console.log(user);

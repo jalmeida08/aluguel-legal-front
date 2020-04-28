@@ -12,6 +12,9 @@ import { Interceptor } from './_config/Interceptor.interceptor';
 import { DataService } from './services/data.service';
 import { MenuComponent } from './menu/menu.component';
 import { AdministracaoModule } from './administracao/administracao.module';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { ImovelModule } from './administracao/manter-imovel/imovel.module';
+import { DiretivaModule } from './_diretivas/diretiva.module';
 
 @NgModule({
   declarations: [
@@ -19,14 +22,17 @@ import { AdministracaoModule } from './administracao/administracao.module';
     MenuComponent,
   ],
   imports: [
+    Interceptor,
     BrowserModule,
     AppRoutingModule,
-    Interceptor,
     HttpClientModule,
     routing,
     LoginModule,
     HomeModule,
-    AdministracaoModule
+    AdministracaoModule,
+    NgxSpinnerModule,
+    ImovelModule,
+    DiretivaModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

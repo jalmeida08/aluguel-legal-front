@@ -1,0 +1,45 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Imovel } from 'src/app/_model/imovel';
+import { urlBase } from 'src/app/_model/urlBase';
+
+@Injectable()
+export class ImovelService {
+
+    constructor(
+        private _http: HttpClient
+    ) { }
+
+    public buscadorCep(cep: string): Observable<any> {
+        return this._http
+            .get(`https://viacep.com.br/ws/${cep}/json/`)
+            .pipe(
+                map( res => {
+                    return res;
+                })
+            );
+    }
+
+    public salvar(imovel: Imovel): Observable<any> {
+        return this._http
+            .post(`${urlBase.url}/imovel/salvar`, imovel)
+            .pipe(
+                map( res => {
+                    return res;
+                })
+            );
+    }
+
+    public listarImovel(): Observable<any>{
+        return this._http
+            .get(`${urlBase.url}/imovel/listar-imoveis`)
+            .pipe(
+                map(res => {
+                    return res
+                })
+            )
+    }
+
+}
