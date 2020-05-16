@@ -13,8 +13,13 @@
     </div>
 </div> -->
 
-<menu-administracao nomeArea="Locatário" nomeTituloBotao="Adicionar" idModal="#modalCadastrarLocatario" icone="add_circle_outline"></menu-administracao>
+<menu-administracao [componentNavegacaoMenu]="componentNavegacaoMenu" (emitterNewInstanceLocatario)="receberEvento()"></menu-administracao>
 
 <locatario-listar></locatario-listar>
 
-<modal-cadastrar-locatario></modal-cadastrar-locatario>
+<modal-cadastrar-locatario
+    [telaDadosLocatario]="telaDadosLocatario"
+    [telaContatoLocatario]="telaContatoLocatario"
+    [btnAvancar]="btnAvancar"
+    [btnSalvar]="btnSalvar">
+</modal-cadastrar-locatario>

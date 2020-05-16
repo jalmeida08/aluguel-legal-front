@@ -58,12 +58,9 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
     
         return next.handle(dupReq).pipe(
             map(event => {
-                console.log(event);
                 
                 return event;
             }), catchError(error => {
-                console.log("catch", error);
-                console.warn(error.status);
                 
                 if (error.status === 401) {
                     console.log("401");

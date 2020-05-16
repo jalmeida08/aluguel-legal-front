@@ -14,7 +14,7 @@ export class ModalCadastroImovelComponent implements OnInit {
 
     @Input() public imovel: Imovel = new Imovel();
     @Input() public listaProprietarios: Array<Proprietario> = new Array<Proprietario>();
-    public cep: string = '';
+    @Input() public cep: string = '';
     public pessoaSelecionada: Pessoa = new Pessoa();
 
     constructor (private _imoveService: ImovelService) {}
@@ -40,8 +40,8 @@ export class ModalCadastroImovelComponent implements OnInit {
     
     private montarEndereco(res) {
         const bairro: string = res.bairro.indexOf("(") 
-            ? res.bairro 
-            : res.bairro.substring(0, res.bairro.indexOf("(")).trim();
+            ? res.bairro.substring(0, res.bairro.indexOf("(")).trim()
+            : res.bairro;
 
         const cidade: string =  res.bairro.indexOf("(") 
             ? res.bairro.substring((res.bairro.indexOf("(") + 1), res.bairro.indexOf(")"))
@@ -58,8 +58,6 @@ export class ModalCadastroImovelComponent implements OnInit {
     }
 
     ngOnInit() {
-       console.log(this.imovel);
-       
     }
 
 }

@@ -32,14 +32,34 @@ export class ImovelService {
             );
     }
 
-    public listarImovel(): Observable<any>{
+    public listarImoveisEnderecoEspecificado(endereco: string): Observable<any>{
         return this._http
-            .get(`${urlBase.url}/imovel/listar-imoveis`)
+            .post(`${urlBase.url}/imovel/listar-imoveis-endereco-especificado`, endereco)
             .pipe(
                 map(res => {
                     return res
                 })
             )
     }
+
+    public listarImovelsAgrupados(): Observable<any>{
+        return this._http
+            .get(`${urlBase.url}/imovel/buscar-enderecos-agrupados`)
+            .pipe(
+                map(res => {
+                    return res
+                })
+            )
+    }
+
+    public buscarImovelId(id: number): Observable<any> {
+        return this._http
+            .get(`${urlBase.url}/imovel/${id}`)
+            .pipe(
+                map(res => {
+                    return res
+                })
+            )
+    } 
 
 }

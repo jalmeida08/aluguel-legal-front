@@ -18,7 +18,7 @@ export class ListarLocatarioComponent implements OnInit {
         this._locatarioService
             .listarLocatario()
             .subscribe( res => {
-                console.warn(res);
+                /** console.warn(res);**/
             }, error => {
                 console.error(error);
             });

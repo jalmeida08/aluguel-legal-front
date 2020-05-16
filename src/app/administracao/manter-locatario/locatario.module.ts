@@ -5,9 +5,15 @@ import { ListarLocatarioComponent } from './listar-locatario/listar-locatario.co
 import { LocatarioService } from './locatario-service';
 import { ModalCadastrarLocatarioComponent } from './modal/cadastrar/modal-cadastrar-locatario.component';
 import { DiretivaModule } from 'src/app/_diretivas/diretiva.module';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-    imports: [DiretivaModule],
+    imports: [
+        DiretivaModule,
+        FormsModule,
+        CommonModule
+    ],
     exports: [
         LocatarioComponent,
         ListarLocatarioComponent,

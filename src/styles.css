@@ -1,2 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
 .direita { float: right }
+.selecionavel:hover {cursor: pointer}
+.selecionavel {color: #007bff}

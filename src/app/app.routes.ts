@@ -5,14 +5,16 @@ import { HomeComponent } from './home/home.component';
 import { AdministracaoComponent } from './administracao/administracao.component';
 import { CadastrarProprietarioComponent } from './administracao/manter-propietario/cadastrar/cadastrar-proprietario.component';
 import { CadastrarUsuarioComponent } from './administracao/manter-usuario/cadastrar/cadastrar-usuario.component';
+import { DetalheImovelComponent } from './administracao/manter-imovel/detalhe/detalhe-imovel.component';
 
 const appRoutes: Routes = [
     { path: '', component: LoginComponent},
     { path: 'home', component: HomeComponent},
-    { path: 'administracao', component: AdministracaoComponent},
     
+    { path: 'administracao', component: AdministracaoComponent},
     { path: 'administracao/proprietario', component: CadastrarProprietarioComponent},
-    { path: 'administracao/usuario', component: CadastrarUsuarioComponent},
+    { path: 'administracao/usuario',      component: CadastrarUsuarioComponent},
+    { path: 'administracao/imovel/:id',   component: DetalheImovelComponent},
 
     { path: '**', redirectTo: '' }
 ];

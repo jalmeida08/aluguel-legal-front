@@ -11,17 +11,23 @@ export class MenuAdministracaoComponent implements OnInit {
     
     @Input() componentNavegacaoMenu: ComponentNavegacaoMenu = new ComponentNavegacaoMenu();
     @Output() public emitterNewInstanceObjectImovel = new EventEmitter();
+    @Output() public emitterNewInstanceLocatario = new EventEmitter();
 
     constructor() {
     }
 
     public abrirModal(idModal: string) : void {
-        this.checarEmissaoEvento();
+        this.checarEmissaoEvento(idModal);
         $(idModal).modal('show');
     }
     
-    checarEmissaoEvento(){
-        this.emitterNewInstanceObjectImovel.emit();
+    checarEmissaoEvento(idModal){
+        console.log("EMITINDO", idModal);
+        
+        if(idModal === '#modalCadastrarImovel')
+            this.emitterNewInstanceObjectImovel.emit();
+        else if (idModal === '#modalCadastrarLocatario')
+            this.emitterNewInstanceLocatario.emit();
     }
 
     ngOnInit() {}

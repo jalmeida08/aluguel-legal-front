@@ -1,7 +1,33 @@
-<menu-administracao [componentNavegacaoMenu]="componentNavegacaoMenu" (emitterNewInstanceObjectImovel)="receberEvento()"></menu-administracao>
+<menu-administracao [componentNavegacaoMenu]="componentNavegacaoMenu"
+    (emitterNewInstanceObjectImovel)="receberEvento()"></menu-administracao>
 
-<table mat-table [dataSource]="imoveis">
-    
-</table>
-
-<modal-cadastro-imovel [imovel]="imovel" [listaProprietarios]="listaProprietarios"></modal-cadastro-imovel>
+<div class="row">
+    <div class="col-sm-12">
+        <details *ngFor="let item of listaEnderecosAgrupados" (click)="listarImoveisEnderecoEspecificado(item)" id="{{montarId(item.endereco)}}">
+            <summary>{{ item.endereco }} - {{ item.bairro }}/{{ item.cidade }}</summary>
+            <table class="table table-sm table-info">
+                <thead>
+                    <tr>
+                        <th>Complemento</th>
+                        <th>Status</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let imovel of imoveis">
+                        <td>{{imovel.complemento}}</td>
+                        <td>{{imovel.statusImovel}}</td>
+                        <td title="Abrir Unidade" (click)="abrirDetalheImovel(imovel.id)" >
+                            <span class="material-icons selecionavel" >open_in_browser</span>
+                        </td>
+                        <td title="Adicionar Locatario" *ngIf="imovel.statusImovel === 'DISPONIVEL'" (click)="adicionarLocatario(imovel)">
+                            <span class="material-icons selecionavel">person_add</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </details>
+    </div>
+</div>
+<modal-cadastro-imovel [imovel]="imovel" [listaProprietarios]="listaProprietarios" [cep]="cep"></modal-cadastro-imovel>
