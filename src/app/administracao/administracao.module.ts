@@ -14,7 +14,7 @@ import { ImovelModule } from './manter-imovel/imovel.module';
         ProprietarioModule,
         ImovelModule,
         UsuarioModule,
-        DiretivaModule
+        DiretivaModule,
     ],
     exports: [],
     declarations: [

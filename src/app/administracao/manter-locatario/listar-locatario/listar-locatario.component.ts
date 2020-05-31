@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocatarioService } from '../locatario-service';
+import { LocatarioService } from '../locatario.service';
 
 @Component({
     selector: 'locatario-listar',
@@ -15,13 +15,13 @@ export class ListarLocatarioComponent implements OnInit {
     }
 
     public listar(){
-        this._locatarioService
-            .listarLocatario()
-            .subscribe( res => {
-                /** console.warn(res);**/
-            }, error => {
-                console.error(error);
-            });
+        // this._locatarioService
+        //     .listarLocatario()
+        //     .subscribe( res => {
+        //         /** console.warn(res);**/
+        //     }, error => {
+        //         console.error(error);
+        //     });
     }
 
     ngOnInit() {

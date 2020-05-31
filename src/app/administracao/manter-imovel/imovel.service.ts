@@ -12,7 +12,7 @@ export class ImovelService {
         private _http: HttpClient
     ) { }
 
-    public buscadorCep(cep: string): Observable<any> {
+    public buscadorCep(cep: String): Observable<any> {
         return this._http
             .get(`https://viacep.com.br/ws/${cep}/json/`)
             .pipe(
@@ -61,5 +61,15 @@ export class ImovelService {
                 })
             )
     } 
+
+    public listarPossiveisLocatarios(): Observable<any>{
+        return this._http
+            .get(`${urlBase.url}/locatario/lista-possiveis-locatarios`)
+            .pipe(
+                map( res => {
+                    return res;
+                })
+            );
+    }
 
 }

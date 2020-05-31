@@ -7,6 +7,8 @@ import { Proprietario } from 'src/app/_model/proprietario';
 import { StatusImovel } from 'src/app/_model/statusImovel';
 import { ImovelService } from './imovel.service';
 import { Router } from '@angular/router';
+import { Locatario } from 'src/app/_model/locatario';
+declare var $: any;
 
 @Component({
     selector: 'imovel',
@@ -19,9 +21,15 @@ export class ImovelComponent implements OnInit {
     public componentNavegacaoMenu: ComponentNavegacaoMenu = new ComponentNavegacaoMenu();
     public listaProprietarios:Array<Proprietario> = new Array<Proprietario>();
     public listaEnderecosAgrupados: Array<any> = new Array<any>();
+    public listaProvaveisLocatarios: Array<Locatario> = new Array<Locatario>();
+    public listaProvaveisLocatarioSelecionado: Array<Locatario> = new Array<Locatario>();
+    public imoveis: Array<Imovel> = new Array<Imovel>();;
     public imovel: Imovel = new Imovel();
-    public imoveis: Array<Imovel>;
-    public cep: string = '';
+    public cep: String = new String("");
+    public imovelSelecionadoProvavelLocatario: Imovel = new Imovel();
+    public locatarioSelecionado: Locatario = new Locatario();
+    public modalTela1: boolean = false;
+    public modalTela2: boolean = false;    
 
     constructor(
         private _proprietarioService: ProprietarioService,
@@ -40,23 +48,78 @@ export class ImovelComponent implements OnInit {
         }
     }
 
-    public adicionarLocatario(imovel: Imovel){
-        
+    public selecionarProvavelLocatario(locatario: Locatario){
+        this.locatarioSelecionado = locatario;
     }
     
     public abrirDetalheImovel(id: number){
         this._router.navigate([`administracao/imovel/${id}`]);
     }
     
-    public receberEvento(string: string){
+    public receberEvento(){
         this.listarProprietarios();
+        this.cep = new String("");
         this.imovel = new Imovel();
-        this.cep = undefined;
         this.imovel.statusImovel = StatusImovel.DISPONIVEL;
+        console.log(this.cep, 'CEP');
+        
     }
     
     public montarId(endereco: string):string{
         return endereco.replace(/\s/g, '');
+    }
+
+    public abrirModal(idModal, imovel: Imovel){
+        this.listaProvaveisLocatarios = new Array<Locatario>();
+        this.listaProvaveisLocatarioSelecionado = new Array<Locatario>();
+        this.locatarioSelecionado = new Locatario();
+        this.modalTela1 = true;
+        this.modalTela2 = false;
+        
+        $(idModal).modal('show');
+        this.imovelSelecionadoProvavelLocatario = imovel;
+        this._imovelService
+            .listarPossiveisLocatarios()
+            .subscribe( res => {
+               this.listaProvaveisLocatarios = res;
+            });
+    }
+    
+    public adicionarProvavelLocatario(locatarioSelecionado: Locatario){
+        if(this.listaProvaveisLocatarios.indexOf(locatarioSelecionado) < 0) return;
+        this.listaProvaveisLocatarioSelecionado.push(locatarioSelecionado);
+        this.listaProvaveisLocatarios = this.listaProvaveisLocatarios.filter(
+            (item : Locatario) => {
+                return item !== locatarioSelecionado;
+            });
+        this.locatarioSelecionado = new Locatario();
+    }
+
+    public removerProvavelLocatario(locatarioSelecionado: Locatario){
+        if(this.listaProvaveisLocatarioSelecionado.indexOf(locatarioSelecionado) < 0) return;
+        this.listaProvaveisLocatarios.push(locatarioSelecionado);
+        this.listaProvaveisLocatarioSelecionado = this.listaProvaveisLocatarioSelecionado.filter(
+            (item: Locatario) => {
+                return item !== locatarioSelecionado;
+            });
+        this.locatarioSelecionado = new Locatario();
+    }
+
+    public avancarTela(){
+        if(this.modalTela1 === true){
+            this.modalTela1 = false;
+            this.modalTela2 = true;
+        }else if(this.modalTela2 === true){
+            this.modalTela1 = false;
+            this.modalTela2 = false;
+        }
+    }
+
+    public voltarTela(){
+        if(this.modalTela2 === true){
+            this.modalTela1 = true;
+            this.modalTela2 = false;
+        }
     }
     
     private listarImovelsAgrupados() {
@@ -91,7 +154,6 @@ export class ImovelComponent implements OnInit {
             tituloMenu: 'Imóvel',
             listaComponentesMenu: arrayListaComponentesMenu
         };
-        
     }
 
     private checarSeBuscaImoveis(imovelSelecionado: Imovel){

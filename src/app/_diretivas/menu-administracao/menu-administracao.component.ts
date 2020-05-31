@@ -21,7 +21,7 @@ export class MenuAdministracaoComponent implements OnInit {
         $(idModal).modal('show');
     }
     
-    checarEmissaoEvento(idModal){
+    public checarEmissaoEvento(idModal){
         console.log("EMITINDO", idModal);
         
         if(idModal === '#modalCadastrarImovel')

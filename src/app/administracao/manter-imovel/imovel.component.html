@@ -21,8 +21,8 @@
                         <td title="Abrir Unidade" (click)="abrirDetalheImovel(imovel.id)" >
                             <span class="material-icons selecionavel" >open_in_browser</span>
                         </td>
-                        <td title="Adicionar Locatario" *ngIf="imovel.statusImovel === 'DISPONIVEL'" (click)="adicionarLocatario(imovel)">
-                            <span class="material-icons selecionavel">person_add</span>
+                        <td title="Adicionar Locatario" *ngIf="imovel.statusImovel === 'DISPONIVEL'" (click)="abrirModal('#modalAdicionarLocatario', imovel)">
+                            <span class="material-icons selecionavel"> person_add</span>
                         </td>
                     </tr>
                 </tbody>
@@ -30,4 +30,80 @@
         </details>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAdicionarLocatario" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarLocatario"
+	aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalAdicionarLocatario">Adicionar Locatário</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+            <div class="modal-body" *ngIf="modalTela1">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p>Lista de locatários sem vínculos com imóveis</p>
+                    </div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-5">
+                        <p>
+                            Prováveis Locatários da unidade <br>
+                            <b> {{ imovelSelecionadoProvavelLocatario.endereco }} {{ imovelSelecionadoProvavelLocatario.complemento }} </b>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="div-provaveis-locatarios">
+                            <ul>
+                                <li
+                                    *ngFor="let item of listaProvaveisLocatarios"
+                                    [ngClass]="{ 'provavel-locatario-selecionado' : item === locatarioSelecionado }"
+                                    (click)="selecionarProvavelLocatario(item)">{{item.nome}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary" (click)="adicionarProvavelLocatario(locatarioSelecionado)">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-primary" (click)="removerProvavelLocatario(locatarioSelecionado)">
+                            <span class="material-icons">chevron_left</span>
+                        </button>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="div-provaveis-locatarios">
+                            <ul>
+                                <li
+                                    *ngFor="let item of listaProvaveisLocatarioSelecionado"
+                                    [ngClass]="{ 'provavel-locatario-selecionado' : item === locatarioSelecionado }"
+                                    (click)="selecionarProvavelLocatario(item)">{{item.nome}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" *ngIf="modalTela2">
+                <div>
+
+                </div>
+            </div>
+				
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="voltarTela()" *ngIf="!modalTela1">voltar</button>
+                <button type="button" class="btn btn-primary" (click)="avancarTela()">Avançar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+		</div>
+	</div>
+</div>
+
 <modal-cadastro-imovel [imovel]="imovel" [listaProprietarios]="listaProprietarios" [cep]="cep"></modal-cadastro-imovel>
+

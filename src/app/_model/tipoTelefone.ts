@@ -1,4 +1,12 @@
-export enum TipoTelefone{
-    TELEFONE_FIXO = 'Telefone Fixo',
-	CELULAR = 'Celular'
+export class TipoTelefone{
+    public id: number;
+    public descricao: string;
+
+    constructor(
+        id: number,
+        descricao: string
+    ){
+        this.id = id;
+        this.descricao = descricao;
+    }
 }

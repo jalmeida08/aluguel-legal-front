@@ -6,4 +6,7 @@ summary { font-weight: bold; margin: -.5em -.5em 0; padding: .5em;; }
 details[open] { padding: .5em; }
 details[open] summary { border-bottom: 1px solid #aaa; margin-bottom: .5em; }
 
-
+.div-provaveis-locatarios { border: 2px solid #333 }
+.div-provaveis-locatarios > ul { list-style-type: none; min-height: 100px;}
+.div-provaveis-locatarios > ul > li:hover { background-color:rgba(0, 0, 0, 0.2) }
+.provavel-locatario-selecionado { background-color:rgba(0, 0, 0, 0.2)} 

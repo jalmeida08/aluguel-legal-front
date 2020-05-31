@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 
 import { LocatarioComponent } from './locatario.component';
 import { ListarLocatarioComponent } from './listar-locatario/listar-locatario.component';
-import { LocatarioService } from './locatario-service';
+import { LocatarioService } from './locatario.service';
 import { ModalCadastrarLocatarioComponent } from './modal/cadastrar/modal-cadastrar-locatario.component';
 import { DiretivaModule } from 'src/app/_diretivas/diretiva.module';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         DiretivaModule,
         FormsModule,
-        CommonModule
+        CommonModule,
     ],
     exports: [
         LocatarioComponent,

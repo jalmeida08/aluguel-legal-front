@@ -3,10 +3,10 @@ import { TipoTelefone } from './TipoTelefone';
 
 export class Contato {
 
-    private id: number;
-	private pessoa: Pessoa;
-	private numTelefone: number;
-	private tipoTelefone: TipoTelefone;
-	private whatsApp: boolean;
-	private versao: number;
+    public id: number;
+	public pessoa: Pessoa;
+	public numTelefone: number;
+	public tipoTelefone: string;
+	public whatsApp: boolean;
+	public versao: number;
 }
