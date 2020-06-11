@@ -90,19 +90,63 @@
                 </div>
             </div>
             <div class="modal-body" *ngIf="modalTela2">
-                <div>
-
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="descricao">Descricao da despesa</label>
+                            <input type="text" class="form-control" id="descricao" name="descricao" [(ngModel)]="despesa.nome">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="valorDespesa">Valor</label>
+                            <input type="text" class="form-control" id="valorDespesa" name="valorDespesa" [(ngModel)]="despesa.valor">
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="anoMesReferencia">Ano/Mês Referência</label>
+                            <input type="text" class="form-control" id="anoMesReferencia" name="anoMesReferencia" [(ngModel)]="despesa.anoMesReferencia">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="dataVencimento">Data Vencimento</label>
+                            <input type="text" class="form-control" id="dataVencimento" name="dataVencimento" [(ngModel)]="despesa.dataVencimento">
+                        </div>
+                    </div>
+                    <div class="form-check"style="top: 37px">
+                        <input class="form-check-input" type="checkbox" value="" id="despesaPaga" name="despesaPaga" [(ngModel)]="despesaPaga">
+                        <label class="form-check-label" for="despesaPaga">Despesa Paga?</label>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group" *ngIf="despesaPaga" >
+                            <label for="dataPagamento">Data Pagamento</label>
+                            <input type="text" class="form-control" id="dataPagamento" name="dataPagamento" [(ngModel)]="despesa.dataPagamento">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="dataPagamento">Descrição</label>
+                            <textarea class="form-control" id="despesaDescricao" [(ngModel)]="despesa.descricao"></textarea>
+                        </div>
+                    </div>
+                </div>
 				
+		    </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" (click)="voltarTela()" *ngIf="!modalTela1">voltar</button>
-                <button type="button" class="btn btn-primary" (click)="avancarTela()">Avançar</button>
+                <button type="button" class="btn btn-secondary" (click)="avancarTela()" *ngIf="modalTela2">Adicionar mais despesas</button>
+                <button type="button" class="btn btn-primary" (click)="avancarTela()" *ngIf="!modalTela2">Avançar</button>
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
-		</div>
-	</div>
+	    </div>
+    </div>
 </div>
 
 <modal-cadastro-imovel [imovel]="imovel" [listaProprietarios]="listaProprietarios" [cep]="cep"></modal-cadastro-imovel>

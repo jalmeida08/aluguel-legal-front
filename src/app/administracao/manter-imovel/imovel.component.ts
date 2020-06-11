@@ -8,6 +8,7 @@ import { StatusImovel } from 'src/app/_model/statusImovel';
 import { ImovelService } from './imovel.service';
 import { Router } from '@angular/router';
 import { Locatario } from 'src/app/_model/locatario';
+import { Despesa } from 'src/app/_model/despesa';
 declare var $: any;
 
 @Component({
@@ -28,8 +29,10 @@ export class ImovelComponent implements OnInit {
     public cep: String = new String("");
     public imovelSelecionadoProvavelLocatario: Imovel = new Imovel();
     public locatarioSelecionado: Locatario = new Locatario();
+    public despesa: Despesa = new Despesa();
     public modalTela1: boolean = false;
-    public modalTela2: boolean = false;    
+    public modalTela2: boolean = false;
+    public despesaPaga: boolean = false;
 
     constructor(
         private _proprietarioService: ProprietarioService,
@@ -109,6 +112,8 @@ export class ImovelComponent implements OnInit {
         if(this.modalTela1 === true){
             this.modalTela1 = false;
             this.modalTela2 = true;
+            this.despesa = new Despesa();
+            this.despesaPaga = false;
         }else if(this.modalTela2 === true){
             this.modalTela1 = false;
             this.modalTela2 = false;
