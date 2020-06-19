@@ -9,6 +9,7 @@ import { ImovelService } from './imovel.service';
 import { Router } from '@angular/router';
 import { Locatario } from 'src/app/_model/locatario';
 import { Despesa } from 'src/app/_model/despesa';
+import { DataService } from 'src/app/services/data.service';
 declare var $: any;
 
 @Component({
@@ -38,6 +39,7 @@ export class ImovelComponent implements OnInit {
         private _proprietarioService: ProprietarioService,
         private _imovelService: ImovelService,
         private _router: Router,
+        private _dataService: DataService
     ) {}
 
     public listarImoveisEnderecoEspecificado(imovelSelecionado: Imovel) {
@@ -127,12 +129,18 @@ export class ImovelComponent implements OnInit {
         }
     }
     
+    public receberEventoAtualizarLista(){
+        this.listarImovelsAgrupados();
+    }
+    
     private listarImovelsAgrupados() {
         this._imovelService
             .listarImovelsAgrupados()
             .subscribe(res => {
                 this.listaEnderecosAgrupados = new Array<String>();
                 this.listaEnderecosAgrupados = res;  
+            }, error => {
+                this._dataService.alerta(error, "danger", "Erro! ");
             });
     }
     

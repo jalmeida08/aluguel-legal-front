@@ -22,9 +22,10 @@ export class ImovelService {
             );
     }
 
-    public salvar(imovel: Imovel): Observable<any> {
+    public salvar(listaImovel: Array<Imovel>): Observable<any> {
+        console.log("SALVANDO");
         return this._http
-            .post(`${urlBase.url}/imovel/salvar`, imovel)
+            .post(`${urlBase.url}/imovel/salvar-lista-imovel`, listaImovel)
             .pipe(
                 map( res => {
                     return res;

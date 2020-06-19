@@ -8,13 +8,30 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class UsuarioService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private _http: HttpClient) { }
 
-    salvar (usuario: Usuario): Observable<any>{
+    public salvar (usuario: Usuario): Observable<any>{
         console.log(usuario);
         
-        return this.http
-            .post(`${urlBase.url}/usuario/salvar`, usuario)
+        return this._http
+            .post(`${urlBase.url}/usuario/salvar-user-proprietario`, usuario)
             .pipe( map( res => { return res; } ) );
     }
+
+    public salvarUsuarioLocatario (usuario: Usuario): Observable<any>{
+        console.log(usuario);
+        
+        return this._http
+            .post(`${urlBase.url}/usuario/salvar-user-locatario`, usuario)
+            .pipe( map( res => { return res; } ) );
+    }
+    public ativarUsuarioPorChave (chaveAtivacao: string): Observable<any> {
+        return this._http
+            .get(`${urlBase.url}/usuario/ativar-chave-usuario/${chaveAtivacao}`)
+            .pipe( map(
+                res => { return res; }
+            ));
+    }
+
+
 }

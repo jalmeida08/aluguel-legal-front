@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComponentNavegacaoMenu } from 'src/app/_diretivas/menu-administracao/_model/componentes-navegacao-menu';
 import { ListaComponentesMenu } from 'src/app/_diretivas/menu-administracao/_model/lista-componentesMenu';
 import { Locatario } from 'src/app/_model/locatario';
+import { Usuario } from 'src/app/_model/usuario';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class LocatarioComponent implements OnInit {
 
     public componentNavegacaoMenu: ComponentNavegacaoMenu = new ComponentNavegacaoMenu();
     public locatario: Locatario = new Locatario();
+    public usuario: Usuario = new Usuario();
     public telaDadosLocatario: Boolean;
     public telaContatoLocatario: Boolean;
     public btnAvancar: Boolean;
@@ -25,6 +27,7 @@ export class LocatarioComponent implements OnInit {
         this.btnAvancar           = new Boolean(true);
         this.btnSalvar            = new Boolean(false);
         this.locatario            = new Locatario();
+        this.usuario              = new Usuario();
     }
 
     private montarMenuNavegacaoImovel(){

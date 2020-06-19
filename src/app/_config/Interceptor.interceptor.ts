@@ -27,8 +27,8 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
     private _requests = 0;
     constructor(
         private _dataService: DataService,
-        private status: HTTPStatus,
-        private router: Router
+        private _status: HTTPStatus,
+        private _router: Router
     ) {
         _dataService = this._dataService;
     }
@@ -38,7 +38,7 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
         next: HttpHandler,
     ): Observable<HttpEvent<any>> {
         ++this._requests;
-        this.status.setHttpStatus(true);
+        this._status.setHttpStatus(true);
         
         this._dataService.verificarSessao();
         const token = 'Bearer '.concat(this._dataService.recuperarSessao());
@@ -58,18 +58,21 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
     
         return next.handle(dupReq).pipe(
             map(event => {
-                
+
                 return event;
             }), catchError(error => {
                 
-                if (error.status === 401) {
+                if (error.status === 0) {
                     console.log("401");
+                    this._dataService.limparMensagens();
+                    this._dataService.alerta("Usuário não autenticado", "warning", "Alerta!")
+                    this._router.navigate(['']);
                 }
                 return throwError(error);
             }),
             finalize(() => {
                 --this._requests;
-                this.status.setHttpStatus(this._requests > 0);
+                this._status.setHttpStatus(this._requests > 0);
             })
         );
     }

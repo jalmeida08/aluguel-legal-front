@@ -7,6 +7,7 @@ import { ModalCadastrarLocatarioComponent } from './modal/cadastrar/modal-cadast
 import { DiretivaModule } from 'src/app/_diretivas/diretiva.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UsuarioService } from '../manter-usuario/usuario.service';
 
 @NgModule({
     imports: [
@@ -24,6 +25,9 @@ import { FormsModule } from '@angular/forms';
         ListarLocatarioComponent,
         ModalCadastrarLocatarioComponent
     ],
-    providers: [LocatarioService],
+    providers: [
+        LocatarioService,
+        UsuarioService
+    ],
 })
 export class LocatarioModule { }

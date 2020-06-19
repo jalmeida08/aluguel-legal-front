@@ -6,6 +6,7 @@ import { AdministracaoComponent } from './administracao/administracao.component'
 import { CadastrarProprietarioComponent } from './administracao/manter-propietario/cadastrar/cadastrar-proprietario.component';
 import { CadastrarUsuarioComponent } from './administracao/manter-usuario/cadastrar/cadastrar-usuario.component';
 import { DetalheImovelComponent } from './administracao/manter-imovel/detalhe/detalhe-imovel.component';
+import { UsuarioComponent } from './administracao/manter-usuario/usuario.component';
 
 const appRoutes: Routes = [
     { path: '', component: LoginComponent},
@@ -15,8 +16,9 @@ const appRoutes: Routes = [
     { path: 'administracao/proprietario', component: CadastrarProprietarioComponent},
     { path: 'administracao/usuario',      component: CadastrarUsuarioComponent},
     { path: 'administracao/imovel/:id',   component: DetalheImovelComponent},
+    { path: 'administracao/usuario/confirm/:chave_ativacao', component: UsuarioComponent},
 
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: '' },
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

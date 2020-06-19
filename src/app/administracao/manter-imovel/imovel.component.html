@@ -149,5 +149,9 @@
     </div>
 </div>
 
-<modal-cadastro-imovel [imovel]="imovel" [listaProprietarios]="listaProprietarios" [cep]="cep"></modal-cadastro-imovel>
+<modal-cadastro-imovel
+    [imovel]="imovel"
+    [listaProprietarios]="listaProprietarios"
+    [cep]="cep"
+    (emitterUpdateListImovel)="receberEventoAtualizarLista()"></modal-cadastro-imovel>
 

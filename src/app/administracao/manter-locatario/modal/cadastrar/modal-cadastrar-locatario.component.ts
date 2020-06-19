@@ -3,6 +3,10 @@ import { Locatario } from 'src/app/_model/locatario';
 import { Contato } from 'src/app/_model/contato';
 import { TipoTelefone } from 'src/app/_model/TipoTelefone';
 import { LocatarioService } from '../../locatario.service';
+import { Usuario } from 'src/app/_model/usuario';
+import { DataService } from 'src/app/services/data.service';
+import { UsuarioService } from 'src/app/administracao/manter-usuario/usuario.service';
+import { Pessoa } from 'src/app/_model/pessoa';
 
 @Component({
     selector: 'modal-cadastrar-locatario',
@@ -16,12 +20,15 @@ export class ModalCadastrarLocatarioComponent implements OnInit {
     @Input() public telaContatoLocatario: Boolean;
     @Input() public btnAvancar: Boolean;
     @Input() public btnSalvar: Boolean;
+    @Input() public usuario: Usuario = new Usuario();
     public listaTipoTelefone = new Array<TipoTelefone>();
     public contato: Contato = new Contato();
 
     
     constructor(
-        private _locatarioService: LocatarioService
+        private _locatarioService: LocatarioService,
+        private _dataService: DataService,
+        private _usuarioService: UsuarioService
     ) {
         this._locatarioService = _locatarioService;
     }
@@ -49,10 +56,22 @@ export class ModalCadastrarLocatarioComponent implements OnInit {
             .salvarLocatario(this.locatario)
             .subscribe(res => {
                 console.log(res);
+                this.usuario.pessoa = new Pessoa();
+                this.usuario.pessoa.id = res.id;
+                this.salvarUsuario(this.usuario);
             })
         console.log(this.locatario);
     }
 
+    private salvarUsuario(usuario: Usuario){
+        this._usuarioService
+            .salvarUsuarioLocatario(usuario)
+            .subscribe(res => {
+                this._dataService.alerta("Locatário salvo com sucesso","success","Sucesso!");
+                this._dataService.alerta("O locatário receberá um email com instuções para ter acesso ao seu contrato e o sistema do Aluguel Legal","info","Informação!");
+            })
+    }
+    
     private validarContato(){        
         if(this.contato.numTelefone && this.contato.tipoTelefone){
             this.locatario.contato.push(this.contato)

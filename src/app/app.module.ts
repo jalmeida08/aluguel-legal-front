@@ -15,6 +15,7 @@ import { AdministracaoModule } from './administracao/administracao.module';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ImovelModule } from './administracao/manter-imovel/imovel.module';
 import { DiretivaModule } from './_diretivas/diretiva.module';
+import { AlertaModule } from './_diretivas/alerta/alerta.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DiretivaModule } from './_diretivas/diretiva.module';
     HttpClientModule,
     routing,
     LoginModule,
+    AlertaModule,
     HomeModule,
     AdministracaoModule,
     NgxSpinnerModule,
