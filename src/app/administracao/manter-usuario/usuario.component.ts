@@ -20,7 +20,6 @@ export class UsuarioComponent implements OnInit {
         this._usuarioService
             .ativarUsuarioPorChave(chaveAtivacao)
             .subscribe( res => {
-                console.log(res);
                 this._dataService.registrarSessao(res)
                 this._router.navigate(['administracao/']);
             }, error => {
@@ -31,9 +30,8 @@ export class UsuarioComponent implements OnInit {
     private verificarParametroConfirmacaoUsuario(){
         let chaveAtivacao: string = '';
         this._routerParam.params.subscribe(params => chaveAtivacao = params['chave_ativacao']);
-        if(chaveAtivacao){
+        if(chaveAtivacao)
             this.ativarUsuario(chaveAtivacao);
-        }
     }
 
     ngOnInit() {

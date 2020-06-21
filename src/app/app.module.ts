@@ -5,7 +5,6 @@ import { routing } from './app.routes';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule } from './login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
 import { Interceptor } from './_config/Interceptor.interceptor';
@@ -16,6 +15,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ImovelModule } from './administracao/manter-imovel/imovel.module';
 import { DiretivaModule } from './_diretivas/diretiva.module';
 import { AlertaModule } from './_diretivas/alerta/alerta.module';
+import { LoginModule } from './area-publica/login/login.module';
+import { AreaPublicaModule } from './area-publica/area-publica.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AlertaModule } from './_diretivas/alerta/alerta.module';
     AdministracaoModule,
     NgxSpinnerModule,
     ImovelModule,
-    DiretivaModule
+    DiretivaModule,
+    AreaPublicaModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

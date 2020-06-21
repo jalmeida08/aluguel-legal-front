@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-sm-4 ">
+        <form (submit)="salvar()" method="POST" >
+            
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" [(ngModel)]="pessoa.nome" name="nome">
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf" [(ngModel)]="pessoa.num_cpf" name="cpf">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email">
+                </div>
+            </div> 
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>        
+    </div>
+</div>

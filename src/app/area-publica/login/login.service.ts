@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { urlBase } from '../_model/urlBase';
-import { Usuario } from '../_model/usuario';
+import { urlBase } from '../../_model/urlBase';
+import { Usuario } from '../../_model/usuario';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { stringify } from 'querystring';

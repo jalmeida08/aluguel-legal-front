@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../_model/usuario';
+import { Usuario } from '../../_model/usuario';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
-import { DataService } from '../services/data.service';
-import { AppComponent } from '../app.component';
+import { DataService } from '../../services/data.service';
 
 @Component({
     selector: 'login-name',
@@ -37,7 +36,7 @@ export class LoginComponent implements OnInit {
             }, error => {
                 console.error(error);
                 this._dataService.alerta(error.error, "danger", "Erro! ");
-            });
+            }); 
     }
 
     ngOnInit() {
