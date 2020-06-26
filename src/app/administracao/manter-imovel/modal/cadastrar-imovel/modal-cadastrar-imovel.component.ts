@@ -41,32 +41,35 @@ export class ModalCadastroImovelComponent implements OnInit {
     }
 
     public salvar(): void {
-        console.warn('CHAMDNO SALVAR');
+        console.warn('CHAMDNO SALVAR', this.listaImovel);
         this._imoveService
             .salvar(this.listaImovel)
-            .subscribe(res => {
+            .subscribe( () => {
                 this._dataService.alerta("Salvo com sucesso.", "success", "Sucesso!");
                 $('modalCadastrarImovel').modal('hide');
             });
     }
   
     public adicionarMaisParaEsseEndereco(): void{
+        let pessoa: Pessoa = new Pessoa();
         this.imovel.pessoa.push(this.pessoaSelecionada);
         this.listaImovel.push(this.imovel);
+
         let cep          = this.imovel.cep;
         let proprietario = this.imovel.pessoa;
         let numero       = this.imovel.numero;
+
         this.imovel = new Imovel();
-        this.imovel.cep    = cep;
+        this.imovel.cep = cep;
         this.buscarCep();
         this.imovel.numero = numero;
         this.imovel.pessoa = proprietario;
+
         this.limparCamposParaNovasUnidades();
     }
     
     private limparCamposParaNovasUnidades(){
         this.imovel.complemento = '';
-        console.log(StatusImovel.DISPONIVEL);
         this.imovel.statusImovel = StatusImovel.DISPONIVEL;
     }
     

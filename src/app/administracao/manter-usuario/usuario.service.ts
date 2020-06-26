@@ -28,10 +28,19 @@ export class UsuarioService {
     public ativarUsuarioPorChave (chaveAtivacao: string): Observable<any> {
         return this._http
             .get(`${urlBase.url}/usuario/ativar-chave-usuario/${chaveAtivacao}`)
-            .pipe( map(
-                res => { return res; }
-            ));
+            .pipe( map( res => { return res; } ));
     }
 
+    public buscarInformacoesPorChaveAtivacao(chaveAtivacao: string): Observable<any> {
+        return this._http
+            .get(`${urlBase.url}/usuario/buscar-informacoes-por-chave-ativacao/${chaveAtivacao}`)
+            .pipe( map (res => { return res; }));
+    }
+
+    public finalizarCadastroUsuario(usuario: Usuario): Observable<any> {
+        return this._http
+            .post(`${urlBase.url}/usuario/finalizar-cadastro-usuario`, usuario)
+            .pipe( map (res => { return res; }));
+    }
 
 }
